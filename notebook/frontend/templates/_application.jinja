@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+    <head>
+        <title>{% block title%}{% endblock %}</title>
+        {% include "_header.jinja" %}
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        {# replace block with content #}
+        {% block content %}{% endblock %}
+
+        {% block footer %}
+          {# footer here please #}
+          {% include "_footer.jinja" %}
+        {% endblock %}
+    </body>
+        {% block after_body %}
+        {% endblock %}
+</html>

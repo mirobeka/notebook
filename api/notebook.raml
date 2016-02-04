@@ -1,0 +1,79 @@
+#%RAML 1.0
+title: Notebook REST API
+version: v1
+baseUri: http://{lunchbox_ip}/api/{version}
+baseUriParameters:
+  lunchbox_ip:
+    description: ip address of running lunchbox server
+protocols: [HTTP]
+mediaType: application/json
+
+documentation:
+  - title: Notebook REST API documentation
+    content: !include docs/about_notebook.md
+
+types:
+  - ErrorMessage: !include types/error_message.raml
+  - Note: !include types/note.raml
+  - Notes:
+      description: List of Notes
+      type: object
+      properties:
+        notes: Note[]
+
+resourceTypes:
+  - collection: !include types/collection.raml
+
+
+/about:
+  type: about
+/notes:
+  description: Endpoint for all notes
+  type: collection
+  /{note_id}:
+    uriParameters:
+      note_id:
+        type: integer
+        minimum: 0
+        required: true
+    description: Selects note by ID
+    get:
+      description: Returns data for note identified by ID
+      responses:
+        200:
+          description: Note exists and is returned
+          body:
+            application/json:
+              type: Note
+        400:
+          description: Selected note with {note_id} does not exists
+          body:
+            application/json:
+              type: ErrorMessage
+    put:
+      description: Edit note with {note_id}
+      responses:
+        200:
+          description: Note was edited successfully
+          body:
+            application/json:
+              type: Note
+        400:
+          description: Bad request. Data are not correct
+          body:
+            application/json:
+              type: ErrorMessage
+    delete:
+      description: Deletes note with {note_id}
+      responses:
+        200:
+          body:
+            application/json:
+              type: object
+              properties:
+                result: boolean
+        404:
+          body:
+            application/json:
+              type: ErrorMessage
+

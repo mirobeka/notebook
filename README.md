@@ -1,1 +1,2 @@
 # notebook
+Example application
