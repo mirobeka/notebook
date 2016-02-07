@@ -5,8 +5,6 @@ from notebook.models import Note
 
 notebook_api = Blueprint("notebook_api", __name__)
 
-jladfsdfs
-
 @notebook_api.route("/", methods=['GET'])
 def index():
     # return api discovery string
