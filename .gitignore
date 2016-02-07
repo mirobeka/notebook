@@ -58,3 +58,6 @@ target/
 
 # Vagrant
 .vagrant/
+
+# virtual environment
+venv/
