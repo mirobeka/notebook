@@ -2,6 +2,7 @@
 
 # install required packages
 apt-get update
+apt-get install git
 
 # install pip - latest version
 wget https://bootstrap.pypa.io/get-pip.py

@@ -1,1 +1,1 @@
-recursive-include notes *
+recursive-include notebook/frontend *
