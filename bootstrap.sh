@@ -30,5 +30,8 @@ pip install virtualenv
 su - vagrant -c "virtualenv -p /usr/local/lib/python2.7.10/bin/python /vagrant/venv"
 su - vagrant -c "/vagrant/venv/bin/pip install -r /vagrant/requirements.txt"
 
+# install nginx server
+apt-get install nginx
+
 
 #TODO: fix annoying locale message
