@@ -4,6 +4,23 @@ def pack():
     # create a new source distribution as tarball
     local('python setup.py sdist --formats=gztar', capture=False)
 
+def local_store(sha):
+    '''Stores application package into artifact repository and updates
+    'current' symbolic link
+    '''
+    fullname = local('python setup.py --fullname', capture=True).strip()
+    local(
+            'mkdir -p /www/data/artifacts/{}/{}'.format(fullname, sha)
+       )
+
+    cmd = 'cp dist/{}.tar.gz '.format(fullname)
+    cmd +=  '/www/data/artifacts/{}/{}/'.format(fullname, sha)
+    local(cmd)
+
+    cmd = 'ln -s /www/data/artifacts/{}/{} '.format(fullname,sha)
+    cmd += '/www/data/artifacts/current'
+    local(cmd)
+
 def deploy(sha, repository='http://sjudeu.sk/artifacts'):
     fullname = local('python setup.py --fullname', capture=True).strip()
     dist_url = '{repo}/{name}/{sha}/{name}.tar.gz'.format(
@@ -24,6 +41,8 @@ def deploy(sha, repository='http://sjudeu.sk/artifacts'):
 
     # now that all is set up, delete the folder again
     run('rm -rf /tmp/notebook')
+    # restart uwsgi
+    # sudo('service apache2 restart')
 
 def clean():
     # remove sdist
