@@ -32,6 +32,8 @@ def deploy(sha, repository='http://sjudeu.sk/artifacts'):
             name=fullname)
 
     # grab the notebook package from binary repository
+    with settings(warn_only=True):
+        run('rm -rf /tmp/notebook')
     run('mkdir /tmp/notebook')
     run('wget -P /tmp/notebook/ {dist}'.format(dist=dist_url))
 
