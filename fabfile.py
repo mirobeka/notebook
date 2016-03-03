@@ -21,7 +21,7 @@ def local_store(sha):
         local('rm /www/data/artifacts/current') # can fail
 
     cmd = 'ln -s /www/data/artifacts/{}/{} '.format(fullname,sha)
-    cmd += '/www/data/artifacts/current'
+    cmd += '/www/data/artifacts/{}/current'.format(fullname)
     local(cmd)
 
 def deploy(sha, repository='http://sjudeu.sk/artifacts'):
@@ -45,7 +45,7 @@ def deploy(sha, repository='http://sjudeu.sk/artifacts'):
     # now that all is set up, delete the folder again
     run('rm -rf /tmp/notebook')
     # restart uwsgi
-    # sudo('service apache2 restart')
+    sudo('restart notebook')
 
 def clean():
     # remove sdist
