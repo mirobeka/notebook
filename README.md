@@ -1,4 +1,4 @@
-[![Build Status](http://sjudeu.sk:8080/view/notebook/job/notebook-unit-tests/badge/icon)](http://sjudeu.sk:8080/view/notebook/job/notebook-unit-tests/)
+[![Build Status](http://sjudeu.sk:8080/buildStatus/icon?job=notebook-unit-tests)](http://sjudeu.sk:8080/job/notebook-unit-tests/)
 [![codecov.io](https://codecov.io/github/mirobeka/notebook/coverage.svg?branch=master)](https://codecov.io/github/mirobeka/notebook?branch=master)
 
 # Notebook
