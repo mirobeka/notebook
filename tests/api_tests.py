@@ -10,6 +10,12 @@ class NotebookAPITestCase(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_about_info(self):
+        uri = '/api/v1/about'
+        rv = self.client.get(uri, follow_redirects=True)
+        expected = "simple notebook app"
+        self.assertEqual(rv.data, expected)
+
     def test_discovery_string(self):
         uri = '/api/v1/'
         rv = self.client.get(uri, follow_redirects=True)

@@ -10,6 +10,10 @@ def index():
     # return api discovery string
     return "You've discovered notebook api!"
 
+@notebook_api.route("/about/", methods=['GET'])
+def about():
+    return "simple notebook app"
+
 @notebook_api.route("/notes/", methods=["GET"])
 def get_notes():
     notes = Note.get_sample_notes()
