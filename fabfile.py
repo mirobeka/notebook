@@ -18,7 +18,7 @@ def local_store(sha):
     local(cmd)
 
     with settings(warn_only=True):
-        local('rm /www/data/artifacts/current') # can fail
+        local('rm /www/data/artifacts/{}/current'.format(fullname)) # can fail
 
     cmd = 'ln -s /www/data/artifacts/{}/{} '.format(fullname,sha)
     cmd += '/www/data/artifacts/{}/current'.format(fullname)
