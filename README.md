@@ -1,7 +1,6 @@
 [![Build Status](http://sjudeu.sk:8080/buildStatus/icon?job=notebook-unit-tests)](http://sjudeu.sk:8080/job/notebook-unit-tests/)
 [![codecov.io](https://codecov.io/github/mirobeka/notebook/coverage.svg?branch=master)](https://codecov.io/github/mirobeka/notebook?branch=master)
 
-helloo
 # Notebook
 Simple application for making notes
 
