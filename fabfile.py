@@ -24,7 +24,7 @@ def local_store(sha):
     cmd += '/www/data/artifacts/{}/current'.format(fullname)
     local(cmd)
 
-def deploy(sha, repository='http://sjudeu.sk/artifacts'):
+def deploy(sha, repository='http://sjudeu.sk:8082/artifacts'):
     fullname = local('python setup.py --fullname', capture=True).strip()
     dist_url = '{repo}/{name}/{sha}/{name}.tar.gz'.format(
             repo=repository,
